@@ -1,0 +1,58 @@
+# Next.js
+src/.next/
+src/out/
+
+# Node.js
+src/node_modules/
+src/npm-debug.log*
+src/yarn-debug.log*
+src/yarn-error.log*
+
+# dependencies
+src/.pnp
+src/.pnp.js
+src/.yarn/install-state.gz
+
+# testing
+src/coverage
+
+# Environment variables
+src/.env
+src/.env.local
+src/.env.development.local
+src/.env.test.local
+src/.env.production.local
+
+# vercel
+src/.vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+# next-env.d.ts
+
+src/.react-email/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.seed
+*.pid.lock
+*.tsbuildinfo
+*.torrent

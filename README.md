@@ -1,4 +1,4 @@
-# riteway-signs-web
+# next-with-api
 
 ## Getting started
 
