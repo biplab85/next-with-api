@@ -1,58 +1,41 @@
-# Next.js
-src/.next/
-src/out/
-
-# Node.js
-src/node_modules/
-src/npm-debug.log*
-src/yarn-debug.log*
-src/yarn-error.log*
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-src/.pnp
-src/.pnp.js
-src/.yarn/install-state.gz
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # testing
-src/coverage
+/coverage
 
-# Environment variables
-src/.env
-src/.env.local
-src/.env.development.local
-src/.env.test.local
-src/.env.production.local
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
 
 # vercel
-src/.vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-# next-env.d.ts
-
-src/.react-email/
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Misc
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.seed
-*.pid.lock
-*.tsbuildinfo
-*.torrent
+next-env.d.ts
