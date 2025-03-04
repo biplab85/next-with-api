@@ -1,13 +1,19 @@
-import React from 'react'
-import UserTable from './UserTable'
+import React from 'react';
+import UserTable from './UserTable';
 
-const UsersPage = async () => {
-
-    return (
-        <>
-            <UserTable />
-        </>
-    )
+interface Props {
+    searchParams: { sortOrder?: string }; // ✅ Made sortOrder optional
 }
 
-export default UsersPage
+const UsersPage = async ({ searchParams }: Props) => {
+    const params = await searchParams; // ✅ Await the entire object
+    const sortOrder = params.sortOrder || 'username'; // ✅ Provide a default value
+    //console.log(sortOrder);
+    return (
+        <>
+            <UserTable sortOrder={sortOrder} />
+        </>
+    );
+};
+
+export default UsersPage;
