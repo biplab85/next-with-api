@@ -1,14 +1,18 @@
-import React from 'react'
+import React from 'react';
 
 interface Props {
-    params: { slug: [string] };
-    searchParams: { sortOrder: string }
-
+    params: { slug?: string[] }; // ✅ `slug` should be an optional array of strings
 }
-const ProductPage = ({ params: { slug }, searchParams: { sortOrder } }: Props) => {
+
+const ProductPage = async (props: Props) => {
+    const { slug } = await props.params; // ✅ Await inside the function body
+
     return (
-        <div>ProductPage {slug}{sortOrder}</div>
-    )
-}
+        <div>
+            <h1>Product Page</h1>
+            <p><strong>Slug:</strong> {slug ? slug.join(' / ') : 'No slug provided'}</p>
+        </div>
+    );
+};
 
-export default ProductPage
+export default ProductPage;

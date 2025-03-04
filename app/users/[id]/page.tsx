@@ -1,56 +1,32 @@
-"use client";
+import React from 'react';
 
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-
-interface Address {
-    address: string;
-    city: string;
-    state: string;
-    country: string;
+interface Props {
+    params: { id: string };
 }
 
-interface User {
-    id: number;
-    firstName: string;
-    lastName: string;
-    address: Address;
-}
+const UserDetailPage = async (props: Props) => {
+    const { id } = props.params; // ✅ Destructure inside the function
 
-const UserPage = () => {
-    const { id } = useParams();
-    const [user, setUser] = useState<User | null>(null);
-    const [error, setError] = useState("");
+    try {
+        const res = await fetch(`https://dummyjson.com/users/${id}`);
 
-    useEffect(() => {
-        if (!id) return;
+        if (!res.ok) {
+            throw new Error('User not found');
+        }
 
-        const fetchUser = async () => {
-            try {
-                const res = await fetch(`/api/users/${id}`);
-                if (!res.ok) throw new Error("User not found");
+        const user = await res.json();
 
-                const data = await res.json();
-                setUser(data);
-            } catch (err) {
-                setError("Failed to load user details.");
-            }
-        };
-
-        fetchUser();
-    }, [id]);
-
-    if (error) return <div>Error: {error}</div>;
-    if (!user) return <div>Loading...</div>;
-
-    return (
-        <div>
-            <h2>{user.firstName} {user.lastName}</h2>
-            <p>City: {user.address?.city}</p>
-            <p>State: {user.address?.state}</p>
-            <p>Country: {user.address?.country}</p>
-        </div>
-    );
+        return (
+            <div>
+                <h1>User Details</h1>
+                <p><strong>ID:</strong> {user.id}</p>
+                <p><strong>Username:</strong> {user.username}</p>
+                <p><strong>Email:</strong> {user.email}</p>
+            </div>
+        );
+    } catch (error) {
+        return <div>Error: User not found.</div>;
+    }
 };
 
-export default UserPage;
+export default UserDetailPage;
