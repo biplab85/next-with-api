@@ -8,7 +8,7 @@ interface User {
     email: string;
 }
 
-interface Props {
+interface Props { 
     sortOrder: string;
 }
 
