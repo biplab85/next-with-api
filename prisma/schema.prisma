@@ -13,6 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Reference site https://www.prisma.io/docs/orm/prisma-schema/data-model/models
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
