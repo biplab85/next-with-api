@@ -22,3 +22,18 @@ model User {
   isActive     Boolean  @default(true)
   registeredAt DateTime @default(now())
 }
+
+model Student {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  followers    Int      @default(0)
+  isActive     Boolean  @default(true)
+  registeredAt DateTime @default(now())
+}
+
+model Product {
+  id    Int    @id @default(autoincrement())
+  name  String
+  price Float
+}
