@@ -25,8 +25,8 @@ const UploadPage = () => {
     if (result.event !== 'success') return;
 
     const info = result.info as CloudinaryResult;
-    setPublicId(info.public_id);  // Set public_id to state
-    setImageUrl(info.secure_url); // Set secure_url to state for displaying image
+    setPublicId(info.public_id);  
+    setImageUrl(info.secure_url); 
 
     if (info?.secure_url) {
       console.log("📦 Image URL:", info.secure_url);
