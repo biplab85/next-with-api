@@ -13,6 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Reference site https://www.prisma.io/docs/orm/prisma-schema/data-model/models
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
@@ -20,4 +21,19 @@ model User {
   followers    Int      @default(0)
   isActive     Boolean  @default(true)
   registeredAt DateTime @default(now())
+}
+
+model Student {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  followers    Int      @default(0)
+  isActive     Boolean  @default(true)
+  registeredAt DateTime @default(now())
+}
+
+model Product {
+  id    Int    @id @default(autoincrement())
+  name  String
+  price Float
 }
