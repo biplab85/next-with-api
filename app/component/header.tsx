@@ -6,9 +6,12 @@ import Logo from "../../public/logo.svg"; // Ensure this path is correct
 import Link from "next/link";
 import { IoMdHome } from "react-icons/io";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
   const pathname = usePathname(); // Get the current route
+
+  const { status, data: session } = useSession();
 
   return (
     <nav className="h-[80px] bg-black flex items-center px-4">
@@ -41,6 +44,21 @@ const Header = () => {
             <li className={`flex justify-start items-center ${pathname === "/admin" ? "font-bold text-[#bdb577]" : ""}`}>
               <Link href="/admin">Admin</Link>
             </li>
+            {status === 'loading' && <div>Loading...</div>}
+
+            {status === 'authenticated' &&
+              <li className={`flex justify-start items-center ${pathname === "/admin" ? "font-bold text-[#bdb577]" : ""}`}>
+                <div>
+                  {session.user!.name}
+                  <Link href="/api/auth/signout">Logout</Link>
+                </div>
+              </li>}
+
+            {status === 'unauthenticated' &&
+              <li className={`flex justify-start items-center ${pathname === "/admin" ? "font-bold text-[#bdb577]" : ""}`}>
+                <Link href="/api/auth/signin">Login</Link>
+              </li>}
+
           </ul>
         </div>
       </div>
