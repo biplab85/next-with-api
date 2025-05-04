@@ -38,6 +38,9 @@ const Header = () => {
             <li className={`flex justify-start items-center ${pathname === "/users" ? "font-bold text-[#bdb577]" : ""}`}>
               <Link href="/users">Users</Link>
             </li>
+            <li className={`flex justify-start items-center ${pathname === "/posts" ? "font-bold text-[#bdb577]" : ""}`}>
+              <Link href="/posts">Posts</Link>
+            </li>
             <li className={`flex justify-start items-center ${pathname === "/contact" ? "font-bold text-[#bdb577]" : ""}`}>
               <Link href="/contact">Contact</Link>
             </li>
